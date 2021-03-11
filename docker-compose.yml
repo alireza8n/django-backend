@@ -23,8 +23,19 @@ services:
     depends_on:
       - db
     ports:
-      - "8000:8000"
+      - 8000:8000
 
+  minio:
+    image: minio/minio
+    volumes:
+      - minio_data:/data
+    environment:
+      MINIO_SECRET_KEY: ${S3_SECRET_KEY}
+      MINIO_ACCESS_KEY: ${S3_ACCESS_KEY}
+    ports:
+      - 9000:9000
+    command: server http://minio/data
 
 volumes:
   dbdata:
+  minio_data:
