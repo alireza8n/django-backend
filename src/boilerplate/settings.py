@@ -62,8 +62,9 @@ WSGI_APPLICATION = 'boilerplate.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': "django.db.backends.postgresql",
-        'NAME': getenv("DB_NAME", "boilerdb"),
-        "PORT": getenv("DB_PORT", "5432"),
+        "HOST": getenv("DB_HOST", "db"),
+        "PORT": getenv("DB_PORT", 5432),
+        "NAME": getenv("DB_NAME", "postgres"),
         "USER": getenv("DB_USER", "postgres"),
         "PASSWORD": getenv("DB_PASS", "postgres")
     }

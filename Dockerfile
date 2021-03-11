@@ -22,8 +22,7 @@ RUN pip install --disable-pip-version-check --no-cache-dir -r requirements.txt
 
 # Mount sourse code
 COPY src src
-WORKDIR /usr/opt/src
-COPY docker-entrypoint.sh docker-entrypoint.sh
+WORKDIR src
 
 ENTRYPOINT ["bash", "docker-entrypoint.sh"]
 
