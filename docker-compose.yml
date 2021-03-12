@@ -4,12 +4,15 @@ version: "3.7"
 services:
   db:
     image: postgres:13-alpine
+    hostname: db
     volumes:
       - dbdata:/var/lib/postgresql/data
     environment:
       POSTGRES_DB: ${DB_NAME}
       POSTGRES_USER: ${DB_USER}
       POSTGRES_PASSWORD: ${DB_PASS}
+    networks:
+      - db
 
   app:
     build:
@@ -24,18 +27,30 @@ services:
       - db
     ports:
       - 8000:8000
+    networks:
+      - db
+      - storage
 
   minio:
     image: minio/minio
+    hostname: minio
     volumes:
-      - minio_data:/data
+      - minio_data:/var/data
     environment:
       MINIO_SECRET_KEY: ${S3_SECRET_KEY}
       MINIO_ACCESS_KEY: ${S3_ACCESS_KEY}
     ports:
       - 9000:9000
-    command: server data
+    command: server /var/data
+    networks:
+      - storage
+
 
 volumes:
   dbdata:
   minio_data:
+
+
+networks:
+  db:
+  storage:
