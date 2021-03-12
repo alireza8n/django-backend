@@ -1,4 +1,4 @@
-version: "3.7"
+version: "3.8"
 
 
 services:
@@ -31,6 +31,7 @@ services:
     networks:
       - db
       - storage
+      - webserver
 
   minio:
     image: minio/minio
@@ -45,6 +46,27 @@ services:
     command: server /var/data
     networks:
       - storage
+      - webserver
+
+  webserver:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports:
+      - 80:80
+      - 443:443
+    secrets:
+      - nginx.crt
+      - nginx.key
+    networks:
+      - webserver
+
+
+secrets:
+  nginx.crt:
+    external: true
+  nginx.key:
+    external: true
 
 
 volumes:
@@ -55,3 +77,4 @@ volumes:
 networks:
   db:
   storage:
+  webserver:
