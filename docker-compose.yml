@@ -35,7 +35,7 @@ services:
 
 
   app:
-    image: app
+    image: django-backend_app
     build:
       context: ${APP_ROOT:-.}
       dockerfile: Dockerfile
@@ -103,7 +103,7 @@ services:
 
 
   webserver:
-    image: webserver
+    image: django-backend_webserver
     build:
       context: .
       dockerfile: nginx/Dockerfile
