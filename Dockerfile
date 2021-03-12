@@ -18,7 +18,7 @@ RUN echo 'Configuring timezone:' $TZ \
 
 # Copy pip installed packages
 COPY requirements.txt .
-RUN pip install --disable-pip-version-check --no-cache-dir -r requirements.txt
+RUN pip install --disable-pip-version-check -r requirements.txt
 
 # Mount sourse code
 COPY src src
