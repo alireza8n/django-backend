@@ -106,7 +106,7 @@ services:
     image: django-backend_webserver
     build:
       context: nginx
-      dockerfile: nginx/Dockerfile
+      dockerfile: Dockerfile
     ports:
       - 80:80
       - 443:443
