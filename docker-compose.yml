@@ -35,6 +35,7 @@ services:
 
 
   app:
+    image: app
     build:
       context: ${APP_ROOT:-.}
       dockerfile: Dockerfile
@@ -102,6 +103,7 @@ services:
 
 
   webserver:
+    image: webserver
     build:
       context: .
       dockerfile: nginx/Dockerfile
