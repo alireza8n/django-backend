@@ -8,9 +8,13 @@ services:
     volumes:
       - dbdata:/var/lib/postgresql/data
     environment:
-      POSTGRES_DB: ${DB_NAME}
-      POSTGRES_USER: ${DB_USER}
-      POSTGRES_PASSWORD: ${DB_PASS}
+      POSTGRES_DB_FILE: "/run/secrets/db-name"
+      POSTGRES_USER_FILE: "/run/secrets/db-user"
+      POSTGRES_PASSWORD_FILE: "/run/secrets/db-pass"
+    secrets:
+      - db-name
+      - db-user
+      - db-pass
     networks:
       - db
     deploy:
@@ -72,9 +76,9 @@ services:
     hostname: minio
     volumes:
       - minio_data:/var/data
-    environment:
-      MINIO_SECRET_KEY: ${S3_SECRET_KEY}
-      MINIO_ACCESS_KEY: ${S3_ACCESS_KEY}
+    secrets:
+      - secret_key
+      - access_key
     ports:
       - 9000:9000
     command: server /var/data
@@ -132,6 +136,16 @@ secrets:
   nginx.crt:
     external: true
   nginx.key:
+    external: true
+  db-name:
+    external: true
+  db-user:
+    external: true
+  db-pass:
+    external: true
+  secret_key:
+    external: true
+  access_key:
     external: true
 
 
