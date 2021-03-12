@@ -12,6 +12,8 @@ SECRET_KEY = getenv("SECRET_KEY", "dummy-secret-key")
 
 DEBUG = BOOLEAN_MAP.get(getenv("DEBUG"), False)
 
+HOST = getenv('host', 'localhost')
+
 ALLOWED_HOSTS = ["*"]
 
 # Application definition
@@ -95,23 +97,31 @@ USE_TZ = True
 AWS_SECRET_ACCESS_KEY = getenv("S3_SECRET_KEY")
 AWS_ACCESS_KEY_ID = getenv("S3_ACCESS_KEY")
 
-AWS_S3_HOST = getenv("AWS_URL", "minio")
-# AWS_S3_ENDPOINT_URL = getenv("AWS_URL", "minio")
+AWS_S3_ENDPOINT_URL = getenv("AWS_URL", "http://minio:9000")
 
 AWS_STORAGE_BUCKET_NAME = getenv("AWS_BUCKET_NAME", "boilerplate")
 AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
 AWS_S3_FILE_OVERWRITE = True
 AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = "public-read"
+AWS_S3_CUSTOM_DOMAIN = 'localhost:9000/boilerplate'
+AWS_S3_USE_SSL = not DEBUG
+AWS_S3_SECURE_URLS = not DEBUG
 
 # Static files (CSS, JavaScript, Images)
-STATIC_URL = getenv("STATIC_URL", "/static/")
-STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_STORAGE = "boilerplate.storages.StaticStorage"
 
 # Media
-MEDIA_URL = getenv("MEDIA_URL", "/media/")
-MEDIA_ROOT = BASE_DIR / "media"
 DEFAULT_FILE_STORAGE = "boilerplate.storages.MediaStorage"
 
 LOCALE = ((BASE_DIR / "locale/"),)
+
+
+from botocore.client import ClientError
+from storages.backends.s3boto3 import S3Boto3Storage
+
+s3 = S3Boto3Storage()
+try:
+    s3.connection.meta.client.head_bucket(Bucket=AWS_STORAGE_BUCKET_NAME)
+except ClientError:
+    s3.connection.meta.client.create_bucket(Bucket=AWS_STORAGE_BUCKET_NAME)

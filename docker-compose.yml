@@ -25,6 +25,7 @@ services:
       - ~/.ipython:/root/ipython
     depends_on:
       - db
+      - minio
     ports:
       - 8000:8000
     networks:
