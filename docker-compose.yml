@@ -16,12 +16,12 @@ services:
 
   app:
     build:
-      context: ${app_ROOT:-.}
+      context: ${APP_ROOT:-.}
       dockerfile: Dockerfile
     env_file:
       - .env
     volumes:
-      - ${app_ROOT:-.}:/opt/app
+      - ${APP_ROOT:-.}:/opt/app
       - ~/.ipython:/root/ipython
     depends_on:
       - db
