@@ -11,6 +11,9 @@ services:
   app:
     ports:
       - 8000:8000
+    volumes:
+      - ${APP_ROOT:-.}:/opt/app
+      - ~/.ipython:/root/ipython
 
   minio:
     environment:
