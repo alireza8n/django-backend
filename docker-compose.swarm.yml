@@ -61,8 +61,6 @@ services:
     secrets:
       - secret_key
       - access_key
-    ports:
-      - 9000:9000
     deploy:
       restart_policy:
         condition: on-failure
