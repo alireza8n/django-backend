@@ -60,11 +60,11 @@ services:
           - "node.role==manager"
       resources:
         limits:
-          cpus: '0.9'
-          memory: 700M
+          cpus: '2.0'
+          memory: 1000M
         reservations:
-          cpus: '0.15'
-          memory: 300M
+          cpus: '1.0'
+          memory: 1000M
       restart_policy:
         condition: on-failure
         delay: 1s
