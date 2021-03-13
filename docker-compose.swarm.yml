@@ -30,6 +30,7 @@ services:
 
   app:
     environment:
+      AWS_HOST: 'storage.irandbo.ir'
       HOST: 'irandbo.ir'
     secrets:
     - secret_key
