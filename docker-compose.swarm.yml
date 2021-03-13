@@ -1,0 +1,113 @@
+version: "3.7"
+
+
+services:
+  db:
+    environment:
+      POSTGRES_DB_FILE: "/run/secrets/db-name"
+      POSTGRES_USER_FILE: "/run/secrets/db-user"
+      POSTGRES_PASSWORD_FILE: "/run/secrets/db-pass"
+    secrets:
+      - db-name
+      - db-user
+      - db-pass
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - "node.role==manager"
+      resources:
+        limits:
+          cpus: '0.75'
+          memory: 800M
+        reservations:
+          cpus: '0.1'
+          memory: 50M
+      restart_policy:
+        condition: on-failure
+        delay: 1s
+
+
+  app:
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - "node.role==manager"
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1000M
+        reservations:
+          cpus: '1.0'
+          memory: 1000M
+      restart_policy:
+        condition: on-failure
+        delay: 1s
+      update_config:
+        order: start-first
+
+
+  minio:
+    secrets:
+      - secret_key
+      - access_key
+    ports:
+      - 9000:9000
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 10s
+        max_attempts: 10
+        window: 60s
+      placement:
+        constraints:
+          - "node.role==manager"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9000/minio/health/live"]
+      interval: 30s
+      timeout: 20s
+      retries: 3
+
+
+  webserver:
+    ports:
+      - 80:80
+      - 443:443
+    secrets:
+      - nginx.crt
+      - nginx.key
+    deploy:
+      replicas: 1
+      placement:
+        constraints:
+          - "node.role==manager"
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 300M
+        reservations:
+          cpus: '0.05'
+          memory: 15M
+      restart_policy:
+        condition: on-failure
+        delay: 1s
+      update_config:
+        order: start-first
+
+
+secrets:
+  nginx.crt:
+    external: true
+  nginx.key:
+    external: true
+  db-name:
+    external: true
+  db-user:
+    external: true
+  db-pass:
+    external: true
+  secret_key:
+    external: true
+  access_key:
+    external: true
