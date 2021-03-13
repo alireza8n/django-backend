@@ -12,9 +12,9 @@ SECRET_KEY = getenv("SECRET_KEY", "dummy-secret-key")
 
 DEBUG = BOOLEAN_MAP.get(getenv("DEBUG"), False)
 
-HOST = getenv('host', 'localhost')
+HOST = getenv('HOST', 'localhost')
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = [HOST]
 
 # Application definition
 INSTALLED_APPS = [
@@ -104,7 +104,7 @@ AWS_S3_OBJECT_PARAMETERS = {"CacheControl": "max-age=86400"}
 AWS_S3_FILE_OVERWRITE = True
 AWS_QUERYSTRING_AUTH = False
 AWS_DEFAULT_ACL = "public-read"
-AWS_S3_CUSTOM_DOMAIN = 'localhost:9000/boilerplate'
+AWS_S3_CUSTOM_DOMAIN = '{}:9000/{}'.format(HOST, AWS_STORAGE_BUCKET_NAME)
 AWS_S3_USE_SSL = not DEBUG
 AWS_S3_SECURE_URLS = not DEBUG
 
