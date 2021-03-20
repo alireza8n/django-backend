@@ -14,7 +14,7 @@ AWS_HOST = getenv("AWS_HOST", "localhost:9000")
 
 ALLOWED_HOSTS = [HOST]
 
-USER_AUTH_MODEL = "user.User"
+AUTH_USER_MODEL = "user.User"
 
 # Application definition
 INSTALLED_APPS = [
