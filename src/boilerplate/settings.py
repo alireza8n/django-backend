@@ -14,9 +14,15 @@ AWS_HOST = getenv("AWS_HOST", "localhost:9000")
 
 ALLOWED_HOSTS = [HOST]
 
+USER_AUTH_MODEL = "user.User"
+
 # Application definition
 INSTALLED_APPS = [
     "storages",
+
+    "apps.account.authentication",
+    "apps.account.user",
+
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -112,7 +118,6 @@ STATICFILES_STORAGE = "boilerplate.storages.StaticStorage"
 DEFAULT_FILE_STORAGE = "boilerplate.storages.MediaStorage"
 
 LOCALE = ((BASE_DIR / "locale/"),)
-
 
 from botocore.client import ClientError
 from storages.backends.s3boto3 import S3Boto3Storage
