@@ -13,11 +13,6 @@ cat .env.EXAMPLE > .env
 now its build a `.env` file fill the gaps based on your project.
 
 
-# Virtualenv
-```shell script
-virtualenv -p python3 ~/.virtualenv/django-backend
-```
-
 # Code Style
 We use black for our code-style!
 

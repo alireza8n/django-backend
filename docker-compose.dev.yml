@@ -16,7 +16,6 @@ services:
     volumes:
       - ${APP_ROOT:-.}:/opt/app
       - ~/.ipython:/root/ipython
-      - ~/.virtualenv/django-backend/lib/python3.8/site-packages:/usr/local/lib/python3.9/site-packages
     networks:
       - db
       - storage
