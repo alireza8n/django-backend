@@ -56,10 +56,12 @@ echo "YOUR_SECRET" | docker secret create secret-name -
 | secret-key        | storage's secret key 
 | nginx.crt         | The Nginx's certificate
 | nginx.key         | The Nginx's private key
+| dhparam.pem       | <TODO>
 
 > Run the command line below to make nginx ssl
 > ```shell script
 > sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt
+> sudo openssl dhparam -out dhparam.pem 2048
 > ```
 > [Make SSL certificate for Nginx](https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-on-centos-7)
 
