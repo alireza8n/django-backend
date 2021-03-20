@@ -1,0 +1,99 @@
+# Farsi/Persian Package of Django-Backend.
+# Copyright (C) 2021 THE Django-Backend'S Yazdan Ranjbar
+# This file is distributed under the same license as the Django-Backend package.
+# Yazdan Ranjbar <Yazdan_ra@icloud.com>, 2021.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: 0.0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-03-20 21:50+0330\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: Yazdan Ranjbar <Yazdan_ra@icloud.com>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: Farsi/Persian\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: apps/account/user/models.py:14
+msgid "username"
+msgstr "نام کاربری"
+
+#: apps/account/user/models.py:17
+msgid "Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only."
+msgstr ""
+
+#: apps/account/user/models.py:20
+msgid "A user with that username already exists."
+msgstr "یک کاربر با این نام کاربری از قبل وجود دارد"
+
+#: apps/account/user/models.py:23
+msgid "first name"
+msgstr "نام"
+
+#: apps/account/user/models.py:24
+msgid "last name"
+msgstr "نام خانوادگی"
+
+#: apps/account/user/models.py:26
+msgid "email address"
+msgstr "آدرس ایمیل"
+
+#: apps/account/user/models.py:29
+msgid "A user with that email address already exists."
+msgstr "یک کاربر با این آدرس ایمیل از قبل وجود دارد"
+
+#: apps/account/user/models.py:33
+msgid "phone number"
+msgstr "شماره تلفن"
+
+#: apps/account/user/models.py:40
+msgid "A user with that phone number already exists."
+msgstr "یک کاربر با این شماره تلغن از قبل وجود دارد"
+
+#: apps/account/user/models.py:44
+msgid "credit card number"
+msgstr "شماره کارت بانکی"
+
+#: apps/account/user/models.py:50
+msgid "staff status"
+msgstr "وضعیت کارکنان"
+
+#: apps/account/user/models.py:52
+msgid "Designates whether the user can log into this admin site."
+msgstr ""
+
+#: apps/account/user/models.py:55
+msgid "active"
+msgstr "فعال"
+
+#: apps/account/user/models.py:58
+msgid ""
+"Designates whether this user should be treated as active. Unselect this "
+"instead of deleting accounts."
+msgstr ""
+
+#: apps/account/user/models.py:61
+msgid "date joined"
+msgstr "تاریخ عضویت"
+
+#: apps/account/user/models.py:62
+msgid "last modified"
+msgstr "تاریخ آخرین ویرایش"
+
+#: apps/account/user/models.py:71
+msgid "user"
+msgstr "کاربر"
+
+#: apps/account/user/models.py:72
+msgid "users"
+msgstr "کاربران"
+
+#: boilerplate/urls/admin_configuration.py:7
+#: boilerplate/urls/admin_configuration.py:8
+#: boilerplate/urls/admin_configuration.py:9
+msgid "Boilerplate"
+msgstr ""
