@@ -11,10 +11,10 @@ RUN apt-get update
 RUN apt-get install -y --fix-missing --no-install-recommends gcc libpq-dev procps vim netcat gettext
 
 # Configure Timezone
-ENV TZ=Asia/Tehran
-RUN echo 'Configuring timezone:' $TZ \
-    && ln -snf /usr/share/zoneinfo/$TZ /etc/localtime \
-    && echo $TZ > /etc/timezonero
+ENV TIME_ZONE=Asia/Tehran
+RUN echo 'Configuring timezone:' $TIME_ZONE \
+    && ln -snf /usr/share/zoneinfo/$TIME_ZONE /etc/localtime \
+    && echo $TIME_ZONE > /etc/timezonero
 
 # Copy pip installed packages
 COPY requirements.txt .
