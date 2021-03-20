@@ -37,6 +37,14 @@ services:
       - db
       - storage
       - webserver
+    command: >-
+      gunicorn boilerplate.wsgi:application \
+              --name boilerplate-gunicorn \
+              --bind 0.0.0.0:8000 \
+              --workers 10 \
+              --pythonpath "/opt/app/src" \
+              --log-level=info \
+              --timeout 120
     secrets:
     - secret_key
     - access_key
