@@ -25,7 +25,7 @@ black .
 # Run via Docker Compose locally for Development
 To run the project for development purpose run the commandline below:
 ```shell script
-docker-compose up -f docker-compose.yml -f docker-compose.dev.yml
+docker-compose -f docker-compose.yml -f docker-compose.dev.yml up
 ```
 You also can make a alias for this command.
 

@@ -7,6 +7,8 @@ services:
       POSTGRES_DB_FILE: "/run/secrets/db-name"
       POSTGRES_USER_FILE: "/run/secrets/db-user"
       POSTGRES_PASSWORD_FILE: "/run/secrets/db-pass"
+    networks:
+      - db
     secrets:
       - db-name
       - db-user
@@ -31,6 +33,10 @@ services:
     environment:
       AWS_HOST: 'storage.irandbo.ir'
       HOST: 'irandbo.ir'
+    networks:
+      - db
+      - storage
+      - webserver
     secrets:
     - secret_key
     - access_key
@@ -56,6 +62,9 @@ services:
         order: start-first
 
   minio:
+    networks:
+      - storage
+      - webserver
     secrets:
       - secret_key
       - access_key
@@ -75,6 +84,12 @@ services:
       retries: 3
 
   webserver:
+    image: django-backend_webserver
+    build:
+      context: nginx
+      dockerfile: Dockerfile
+    networks:
+      - webserver
     ports:
       - 80:80
       - 443:443
@@ -115,3 +130,9 @@ secrets:
     external: true
   access_key:
     external: true
+
+
+networks:
+  db:
+  storage:
+  webserver:

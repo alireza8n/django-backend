@@ -24,7 +24,6 @@ services:
     networks:
       - db
       - storage
-      - webserver
 
 
   minio:
@@ -35,16 +34,6 @@ services:
     command: server /var/data
     networks:
       - storage
-      - webserver
-
-
-  webserver:
-    image: django-backend_webserver
-    build:
-      context: nginx
-      dockerfile: Dockerfile
-    networks:
-      - webserver
 
 
 volumes:
@@ -55,4 +44,3 @@ volumes:
 networks:
   db:
   storage:
-  webserver:
