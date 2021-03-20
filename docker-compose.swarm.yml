@@ -105,6 +105,7 @@ services:
     secrets:
       - nginx.crt
       - nginx.key
+      - dhparam.pem
     deploy:
       replicas: 1
       placement:
@@ -128,6 +129,8 @@ secrets:
   nginx.crt:
     external: true
   nginx.key:
+    external: true
+  dhparam.pem:
     external: true
   db-name:
     external: true
