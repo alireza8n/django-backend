@@ -1,4 +1,6 @@
 # Django Backend (Boilerplate)
+[![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
+
 A boilerplate built with Django, Postgres, Nginx, etc.
 
 
@@ -9,6 +11,15 @@ To do that firstly, run the command line below on your terminal:
 cat .env.EXAMPLE > .env
 ```
 now its build a `.env` file fill the gaps based on your project.
+
+
+# Code Style
+We use black for our code-style!
+
+It's already written in requirements you just need to run commandline below.
+```shell script
+black .
+```
 
 
 # Run via Docker Compose locally for Development
