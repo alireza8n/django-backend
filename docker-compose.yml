@@ -7,9 +7,6 @@ services:
     hostname: db
     volumes:
       - dbdata:/var/lib/postgresql/data
-    networks:
-      - db
-
 
   app:
     build:
@@ -20,10 +17,6 @@ services:
     depends_on:
       - db
       - minio
-    networks:
-      - db
-      - storage
-
 
   minio:
     image: minio/minio
@@ -31,8 +24,6 @@ services:
     volumes:
       - minio_data:/var/data
     command: server /var/data
-    networks:
-      - storage
 
 
 volumes:
