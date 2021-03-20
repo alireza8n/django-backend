@@ -12,7 +12,6 @@ services:
 
 
   app:
-    image: django-backend_app
     build:
       context: ${APP_ROOT:-.}
       dockerfile: Dockerfile

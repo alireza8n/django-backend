@@ -30,6 +30,7 @@ services:
         delay: 1s
 
   app:
+    image: django-backend_app
     environment:
       AWS_HOST: 'storage.irandbo.ir'
       HOST: 'irandbo.ir'
