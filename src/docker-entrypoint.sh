@@ -26,3 +26,17 @@ if [ $status -ne 0 ]; then
   echo "Failed to collect staticfiles: $status"
   exit $status
 fi
+
+gunicorn boilerplate.wsgi:application \
+        --name boilerplate-gunicorn \
+        --bind 0.0.0.0:8000 \
+        --workers 10 \
+        --pythonpath "/opt/app/src" \
+        --log-level=debug \
+        --timeout 120 \
+        --reload
+status=$?
+if [ $status -ne 0 ]; then
+  echo "Failed to start gunicorn: $status"
+  exit $status
+fi
