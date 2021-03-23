@@ -77,3 +77,12 @@ docker service ls
 ```
 > [Docker Service Document](https://docs.docker.com/engine/reference/commandline/service/)
 
+## Contributing
+
+See [CONTRIBUTING](./CONTRIBUTING.md).
+
+Thanks to all the people who already contributed!
+
+<a href="https://github.com/alireza8n/django-backend/graphs/contributors">
+  <img src="https://contributors-img.web.app/image?repo=alireza8n/django-backend" />
+</a>
